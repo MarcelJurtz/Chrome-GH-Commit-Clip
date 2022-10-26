@@ -21,23 +21,26 @@ function copyToClipboard(text) {
     document.body.removeChild(copyFrom);
 }
 
+function generateCommitMessage() {
+    let container = document.getElementsByClassName("full-commit")[0];
 
-let container = document.getElementsByClassName("full-commit")[0];
-
-if(container) {
-    // Get commit message
-    let msg = container.getElementsByClassName("commit-title")[0].textContent.replace(/\s+/g, ' ').trim();
-    //let timestamp = container.querySelector("relative-time")["date"].toISOString().split('T')[0];
-    let timestamp = container.querySelector("relative-time").getAttribute("datetime").split("T")[0];
-    let sha = container.querySelector("span.sha").textContent.substr(0,9);
-
-    let commit = `${sha} ("${msg}", ${timestamp})`;
-
-    console.log("Found commit:")
-    console.log(commit);
-
-    copyToClipboard(commit);
+    if(container) {
+        // Get commit message
+        let msg = container.getElementsByClassName("commit-title")[0].textContent.replace(/\s+/g, ' ').trim();
+        //let timestamp = container.querySelector("relative-time")["date"].toISOString().split('T')[0];
+        let timestamp = container.querySelector("relative-time").getAttribute("datetime").split("T")[0];
+        let sha = container.querySelector("span.sha").textContent.substr(0,9);
     
-} else {
-    alert("Not a valid GitHub-Page / Container not found");
+        let commit = `${sha} ("${msg}", ${timestamp})`;
+    
+        console.log("Found commit:")
+        console.log(commit);
+    
+        copyToClipboard(commit);
+        
+    } else {
+        alert("Not a valid GitHub-Page / Container not found");
+    }
 }
+
+generateCommitMessage();
