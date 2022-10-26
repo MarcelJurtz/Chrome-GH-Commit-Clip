@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "NV GitHub Extension",
+    "description": "Extension to generate NV-themed commit message for any commit on GitHub",
+    "version": "1.0",
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "tabs", 
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://*/",
+        "https://*/"
+    ]
+}
