@@ -5,11 +5,12 @@
     "version": "1.0",
     "action": {
         "default_popup": "popup.html",
-        "default_icon": "icon.png"
+        "default_icon": "src/assets/icon.png"
     },
     "permissions": [
         "tabs", 
-        "scripting"
+        "scripting",
+        "notifications"
     ],
     "host_permissions": [
         "http://*/",

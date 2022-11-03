@@ -4,7 +4,7 @@ function copyMessage() {
     chrome.scripting.executeScript(
     {
       target: { tabId: tabs[0].id },
-      files: ['script.js']
+      files: ['src/js/script.js']
     });
   });
 
