@@ -1,23 +1,33 @@
+:root {
+    --dark: #000;
+    --color: #fff;
+    --bg-color: #111;
+    --bg-rainbow: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    --btn-width: 220px;
+    --btn-height: 50px;
+    --btn-border-radius: 10px;
+}
+
 html, body {
-    background-color: #111;
+    background-color: var(--bg-color);
 }
 
 button {
-    width: 220px;
-    height: 50px;
+    width: var(--btn-width);
+    height: var(--btn-height);
     border: none;
     outline: none;
-    color: #fff;
-    background: #111;
+    color: var(--color);
+    background: var(--bg-color);
     cursor: pointer;
     position: relative;
     z-index: 0;
-    border-radius: 10px;
+    border-radius: var(--btn-border-radius);
 }
 
 button:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: var(--bg-rainbow);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -33,7 +43,7 @@ button:before {
 }
 
 button:active {
-    color: #000
+    color: var(--dark);
 }
 
 button:active:after {
@@ -50,7 +60,7 @@ button:after {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: var(--dark);
     left: 0;
     top: 0;
     border-radius: 10px;

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "NV GitHub Extension",
-    "description": "Extension to generate NV-themed commit message for any commit on GitHub",
+    "name": "GitHub Commit-Message Clipboard Extension",
+    "description": "Extension to generate formatted commit message for any commit on GitHub",
     "version": "1.0",
     "action": {
         "default_popup": "popup.html",
