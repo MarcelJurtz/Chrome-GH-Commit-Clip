@@ -39,25 +39,35 @@ function generateCommitMessage() {
 
     // Check if page is valid
     let regex = new RegExp('https:\/\/github\.com(?:\/[^\/]+)*\/commit\/[0-9a-f]{40}');
-    
-    if(regex.test(window.location.toString())) {
+
+    if (regex.test(window.location.toString())) {
         let container = document.getElementsByClassName("full-commit")[0];
 
-        if(container) {
+        if (container) {
             let msg = container.getElementsByClassName("commit-title")[0].textContent.replace(/\s+/g, ' ').trim();
+
+            // Extend msg if content too long
+            if (msg.endsWith("…")) {
+                let descrContainer = container.getElementsByClassName("commit-desc")[0];
+                if (descrContainer) {
+                    let descrContent = descrContainer.textContent;
+                    msg = msg.substring(0, msg.length - 2) + descrContent.substring(1, descrContent.length).replace(/\s+/g, ' ').trim();
+                }
+            }
+
             //let timestamp = container.querySelector("relative-time")["date"].toISOString().split('T')[0];
             let timestamp = container.querySelector("relative-time").getAttribute("datetime").split("T")[0];
-            let sha = container.querySelector("span.sha").textContent.substr(0,9);
-        
+            let sha = container.querySelector("span.sha").textContent.substr(0, 9);
+
             let commit = `${sha} ("${msg}", ${timestamp})`;
-        
+
             console.log("Found commit:")
             console.log(commit);
-        
+
             copyToClipboard(commit);
 
             success(sha, commit);
-            
+
         } else {
             alert("Container not found");
         }
